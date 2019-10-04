@@ -48,5 +48,3 @@ variable "backend_storage_account_name" {
 variable "arm_client_id" { }
 variable "arm_client_secret" { }
 variable "arm_tenant_id" { }
-
-variable "subscription_id" { }
