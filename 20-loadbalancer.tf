@@ -27,6 +27,10 @@ module "f5-01" {
   environment                       = "${var.environment}"
   tags                              = "${var.tags}"
   backend_storage_account_name      = "${var.backend_storage_account_name}"
+  subscription_id                   = "${var.subscription_id}"
+  arm_client_id                     = "${var.arm_client_id }"
+  arm_client_secret                 = "${var.arm_client_secret}"
+  arm_tenant_id                     = "${var.arm_tenant_id}"
 }
 
 
