@@ -68,3 +68,7 @@ locals {
   palo-dmz                                   = "${data.azurerm_network_interface.palo-dmz.private_ip_address}"
 }
 
+data "azurerm_network_interface" "proxy-ip" {
+  name                                      = "proxy-${var.environment}-nic"
+  resource_group_name                       = "${data.azurerm_resource_group.rg-dmz.name}"
+}
