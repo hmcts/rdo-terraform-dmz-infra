@@ -34,5 +34,5 @@ module "firewall" {
   pip-ansible                         = "${azurerm_public_ip.pip-ansible.ip_address}"
   ansible-nic                         = "${azurerm_network_interface.ansible_server_nic.id}"
   proxy_subnet                        = "${data.azurerm_subnet.subnet-dmz-proxy.address_prefix}"
-  proxy_ip                            = "${local.proxy-ip}"
+  proxy_ip                            = "${data.azurerm_network_interface.proxy-ip.private_ip_address}"
 }
