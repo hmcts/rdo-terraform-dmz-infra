@@ -39,13 +39,3 @@ resource "azurerm_subnet_route_table_association" "route_association" {
   subnet_id                         = "${data.azurerm_subnet.subnet-dmz-loadbalancer.id}"
   route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
 }
-
-resource "azurerm_subnet_route_table_association" "route_association_2" {
-  subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-private.id}"
-  route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
-}
-
-resource "azurerm_subnet_route_table_association" "route_association_3" {
-  subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-public.id}"
-  route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
-}
