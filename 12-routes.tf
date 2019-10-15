@@ -21,7 +21,7 @@ resource "azurerm_route_table" "rt" {
 
 
 resource "azurerm_route_table" "udr-dmz-f5" {
-  name                              = "${var.vnet-name}-${var.environment}-udr-dmz-palo"
+  name                              = "${var.vnet-name}-${var.environment}-udr-dmz"
   location                          = "${data.azurerm_resource_group.rg-dmz.location}"
   resource_group_name               = "${data.azurerm_resource_group.rg-dmz.name}"
   disable_bgp_route_propagation     = true
@@ -40,3 +40,12 @@ resource "azurerm_subnet_route_table_association" "route_association" {
   route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
 }
 
+resource "azurerm_subnet_route_table_association" "route_association_2" {
+  subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-private.id}"
+  route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
+}
+
+resource "azurerm_subnet_route_table_association" "route_association_3" {
+  subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-public.id}"
+  route_table_id                    = "${azurerm_route_table.udr-dmz-f5.id}"
+}
