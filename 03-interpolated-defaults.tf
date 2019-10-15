@@ -59,8 +59,8 @@ locals {
 }
 
 data "azurerm_network_interface" "palo-dmz" {
-  name                                      = "${data.azurerm_resource_group.rg-hub.name}-nic-transit-public-0"
-  resource_group_name                       = "${data.azurerm_resource_group.rg-hub.name}"
+  name                                      = "${data.azurerm_resource_group.rg-dmz.name}-nic-transit-public-0"
+  resource_group_name                       = "${data.azurerm_resource_group.rg-dmz.name}"
   depends_on                                = ["azurerm_network_interface.vm01_nic_vip"]
 }
 
