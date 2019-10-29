@@ -72,3 +72,24 @@ data "azurerm_network_interface" "proxy-ip" {
   name                                      = "proxy-${var.environment}-nic"
   resource_group_name                       = "${data.azurerm_resource_group.rg-dmz.name}"
 }
+
+data "azurerm_lb" "aks-00" {
+  name                                      = "kubernetes-internal"
+  resource_group_name                       = "MC_sbox-00-rg_${var.environment}-00-aks_uksouth"
+}
+
+data "azurerm_lb" "aks-01" {
+  name                                      = "kubernetes-internal"
+  resource_group_name                       = "MC_sbox-01-rg_${var.environment}-01-aks_uksouth"
+}
+
+
+# Test Outputs
+
+output "aks-00" {
+  value                                     = "${data.azurerm_lb.aks-00.id}"
+}
+
+output "aks-01" {
+  value                                     = "${data.azurerm_lb.aks-01.id}"
+}
