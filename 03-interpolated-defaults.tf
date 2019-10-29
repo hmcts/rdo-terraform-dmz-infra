@@ -89,9 +89,9 @@ data "azurerm_lb" "aks-01" {
 # Test Outputs
 
 output "aks-00" {
-  value                                     = "${data.azurerm_lb.aks-00.id}"
+  value                                     = "${data.azurerm_lb.aks-00.private_ip_address}"
 }
 
 output "aks-01" {
-  value                                     = "${data.azurerm_lb.aks-01.id}"
+  value                                     = "${data.azurerm_lb.aks-01.private_ip_address}"
 }
