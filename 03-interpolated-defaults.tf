@@ -76,11 +76,13 @@ data "azurerm_network_interface" "proxy-ip" {
 data "azurerm_lb" "aks-00" {
   name                                      = "kubernetes-internal"
   resource_group_name                       = "MC_sbox-00-rg_${var.environment}-00-aks_uksouth"
+  provider                                  = "azurerm.dcd-cftapps-sbox"
 }
 
 data "azurerm_lb" "aks-01" {
   name                                      = "kubernetes-internal"
   resource_group_name                       = "MC_sbox-01-rg_${var.environment}-01-aks_uksouth"
+  provider                                  = "azurerm.dcd-cftapps-sbox"
 }
 
 
