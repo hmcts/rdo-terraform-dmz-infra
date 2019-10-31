@@ -43,7 +43,7 @@ resource "azurerm_network_interface" "palo_nic_prod" {
   location                            = "${data.azurerm_resource_group.rg-dmz.location}"
   resource_group_name                 = "${data.azurerm_resource_group.rg-dmz.name}"
   enable_ip_forwarding                = "true"
-  count                               = "${var.environment == "prod" ? 1 : 0}" 
+  count                               = "${var.environment == "prod-int" ? 1 : 0}" 
 
   ip_configuration {
     name                              = "palo-nic-prod-${count.index}"
@@ -60,7 +60,7 @@ resource "azurerm_public_ip" "palo_pip_prod" {
   domain_name_label                   = "palo-pip-prod-${count.index}"
   allocation_method                   = "Static"
   sku                                 = "Standard"	
-  count                               = "${var.environment == "prod" ? 1 : 0}" 
+  count                               = "${var.environment == "prod-int" ? 1 : 0}" 
 }
 
 resource "azurerm_network_interface" "palo_nic_stage" {
@@ -68,7 +68,7 @@ resource "azurerm_network_interface" "palo_nic_stage" {
   location                            = "${data.azurerm_resource_group.rg-dmz.location}"
   resource_group_name                 = "${data.azurerm_resource_group.rg-dmz.name}"
   enable_ip_forwarding                = "true"
-  count                               = "${var.environment == "prod" ? 1 : 0}" 
+  count                               = "${var.environment == "prod-int" ? 1 : 0}" 
 
   ip_configuration {
     name                              = "palo-nic-stage-${count.index}"
@@ -85,5 +85,5 @@ resource "azurerm_public_ip" "palo_pip_stage" {
   domain_name_label                   = "palo-pip-stage-${count.index}"
   allocation_method                   = "Static"
   sku                                 = "Standard"	
-  count                               = "${var.environment == "prod" ? 1 : 0}" 
+  count                               = "${var.environment == "prod-int" ? 1 : 0}" 
 }
