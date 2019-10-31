@@ -87,12 +87,12 @@ variable "environment_mappings" {
 
 data "azurerm_lb" "aks-00" {
   name                                      = "kubernetes-internal"
-  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox")}-00-rg_${lookup(var.environment_mappings, var.environment, "sbox")}-00-aks_uksouth"
+  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-00-rg_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-00-aks_uksouth"
 }
 
 data "azurerm_lb" "aks-01" {
   name                                      = "kubernetes-internal"
-  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox")}-01-rg_${lookup(var.environment_mappings, var.environment, "sbox")}-01-aks_uksouth"
+  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-01-rg_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-01-aks_uksouth"
 }
 
 
