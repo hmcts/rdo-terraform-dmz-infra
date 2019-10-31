@@ -79,12 +79,9 @@ variable "environment_mappings" {
   type = "map"
 
   default = {
-    sbox           = "sbox-intsvc"
-    dev            = "nonprod-intsvc"
-    test           = "nonprod-intsvc"
-    ithc           = "nonprod-intsvc"
-    stg            = "prod-intsvc"
-    prod           = "prod-intsvc"
+    sbox-intsvc     = "sbox"
+    nonprod-intsvc  = ["dev", "test", "ithc"]
+    nonprod-intsvc  = ["stg", "prod"]
   }
 }
 
