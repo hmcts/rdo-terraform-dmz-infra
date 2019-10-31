@@ -73,35 +73,3 @@ data "azurerm_network_interface" "proxy-ip" {
   resource_group_name                       = "${data.azurerm_resource_group.rg-dmz.name}"
 }
 
-
-
-variable "environment_mappings" {
-  type = "map"
-
-  default = {
-    sbox-intsvc     = "sbox"
-    nonprod-intsvc  = ["dev", "test", "ithc"]
-    nonprod-intsvc  = ["stg", "prod"]
-  }
-}
-
-data "azurerm_lb" "aks-00" {
-  name                                      = "kubernetes-internal"
-  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-00-rg_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-00-aks_uksouth"
-}
-
-data "azurerm_lb" "aks-01" {
-  name                                      = "kubernetes-internal"
-  resource_group_name                       = "MC_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-01-rg_${lookup(var.environment_mappings, var.environment, "sbox-intsvc")}-01-aks_uksouth"
-}
-
-
-# Testing Outputs Only
-
-output "aks-00" {
-  value                                     = "${data.azurerm_lb.aks-00.private_ip_address}"
-}
-
-output "aks-01" {
-  value                                     = "${data.azurerm_lb.aks-01.private_ip_address}"
-}
