@@ -49,7 +49,7 @@ resource "azurerm_network_interface" "palo_nic_prod" {
     name                              = "palo-nic-prod-${count.index}"
     subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-public.id}"
     private_ip_address_allocation     = "dynamic"
-    public_ip_address_id              = "${azurerm_public_ip.palo_pip_prod.id}"
+    public_ip_address_id              = "${azurerm_public_ip.palo_pip_prod.*.id}"
   }
 }
 
@@ -74,7 +74,7 @@ resource "azurerm_network_interface" "palo_nic_stage" {
     name                              = "palo-nic-stage-${count.index}"
     subnet_id                         = "${data.azurerm_subnet.subnet-dmz-palo-public.id}"
     private_ip_address_allocation     = "dynamic"
-    public_ip_address_id              = "${azurerm_public_ip.palo_pip_stage.id}"
+    public_ip_address_id              = "${azurerm_public_ip.palo_pip_stage.*.id}"
   }
 }
 
