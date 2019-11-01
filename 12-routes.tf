@@ -10,13 +10,6 @@ resource "azurerm_route_table" "rt" {
     next_hop_type                   = "VirtualAppliance"
     next_hop_in_ip_address          = "${local.palo_ip}"
   }
-
-  route {
-    name                            = "to_proxy"
-    address_prefix                  = "${data.azurerm_subnet.subnet-dmz-proxy.address_prefix}"
-    next_hop_type                   = "VirtualAppliance"
-    next_hop_in_ip_address          = "${local.palo_ip}"
-  }
 }
 
 
